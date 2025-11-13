@@ -21,7 +21,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { userDashboardStore } from "../../../../Store/jobDashboard";
 import ApprovalPopUp from "../../../CommonComponent/ApprovalPopUp";
 // import { UploadSingleFile } from "./UploadSingleFile";
-import UploadSample from "./uploadSample";
+import UploadSample from "./UploadSample";
 import { toast } from "react-toastify";
 
 export function SalesandDealerInfo({ setCurrentIndex }) {
