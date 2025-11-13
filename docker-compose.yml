@@ -7,6 +7,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 5173:5173
+    expose:
+      - "5173"
     networks:
       - network_services
     restart: always
@@ -19,6 +21,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 5000:5000
+    expose:
+      - "5000"
     networks:
       - network_services
     restart: always
@@ -28,7 +32,7 @@ services:
       context: "./nginx"
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8080:80"
     networks:
       - network_services
     restart: always
