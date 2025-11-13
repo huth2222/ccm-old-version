@@ -6,7 +6,7 @@ services:
       context: ccm_frontend
       dockerfile: ./Dockerfile
     ports:
-      - 5173:30517300
+      - 5173:5173
     networks:
       - network_services
     restart: always
