@@ -250,15 +250,15 @@ require("./models");
 // | |___  | | \  | | |_| |       ___| | | |___    | |   | |_| | | |
 // |_____| |_|  \_| |_____/      /_____/ |_____|   |_|   \_____/ |_|
 app.use(errorHandler);
-// app.set("port", PORT);
+app.set("port", PORT);
 // ========================================================================
 app.use((req, res, next) => {
   res.status(404).send({ url: `${req.originalUrl} not found` });
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+// app.listen(PORT, "0.0.0.0", () => {
+//   console.log(`🚀 Server running on port ${PORT}`);
+// });
 // ========================================================================
 
 module.exports = app;
