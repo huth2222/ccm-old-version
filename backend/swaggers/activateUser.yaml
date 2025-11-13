@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Activate User API
+  description: API documentation for user Activate User
+tags:
+  - name: Activate User
+    description: User Activate User
+paths:
+  /activate-user/approve/{id}:
+    put:
+      summary: Approve Activate User request
+      tags:
+        - Activate User
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Approve Activate User request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+        '404':
+          description: Activate User request not found
+        '500':
+          description: Internal server error
+  /activate-user/reject/{id}:
+    put:
+      summary: Reject Activate User request
+      tags:
+        - Activate User
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reject Activate User request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+        '404':
+          description: Activate User request not found
+        '500':
+          description: Internal server error
+
+  /activate-user:
+    post:
+      summary: Activate User
+      tags:
+        - Activate User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                confirmPassword:
+                  type: string
+              required:
+                - email
+                - password
+                - confirmPassword
+      responses:
+        '200':
+          description: Send request to activate user success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        '400':
+          description: email, password, and confirmPassword are required
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    get:
+      summary: List Activate User request
+      tags:
+        - Activate User
+      parameters:
+        - name: searchText
+          in: query
+          description: Text to search within user data
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Activate User request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        '500':
+          description: Internal server error

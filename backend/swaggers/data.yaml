@@ -1,0 +1,248 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Data API
+  description: API documentation for user Data
+tags:
+  - name: Data
+    description: All Data relate token
+paths:
+  /data/allDropDownData/{companyCode}:
+    get:
+      summary: Get all dropdown data
+      tags:
+        - Data
+      parameters:
+        - name: companyCode
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "1100"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "404":
+          description: User not found
+  /data/rejectTopics:
+    get:
+      summary: reject and cancel topics
+      tags:
+        - Data
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/getCoAppproveForArMaster:
+    get:
+      summary: getCoAppproveForArMaster
+      tags:
+        - Data
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/zipcode:
+    post:
+      summary: Data for Thailand
+      tags:
+        - Data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                zipcode:
+                  type: string
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/getCityVietnam:
+    get:
+      summary: get city in vietnam
+      tags:
+        - Data
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/dropDownList:
+    get:
+      summary: get drop down list
+      tags:
+        - Data
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/getDistrictVietnam/{city}:
+    get:
+      summary: get district in vietnam
+      tags:
+        - Data
+      parameters:
+        - name: city
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/userDOAdataSet/{channel}:
+    get:
+      summary: DOA User for each User
+      tags:
+        - Data
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/bankCheck/{taxId}/{branchCode}:
+    get:
+      summary: bank check for new customer
+      tags:
+        - Data
+      parameters:
+        - name: taxId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: branchCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error
+  /data/getSalesGroup/{saleOffice}/{companyCode}:
+    get:
+      summary: Sale group for each User
+      tags:
+        - Data
+      parameters:
+        - name: saleOffice
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: companyCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Data request success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+        "500":
+          description: Internal server error

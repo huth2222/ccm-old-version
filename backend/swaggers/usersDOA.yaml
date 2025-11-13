@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: User DOA API
+  description: API documentation for user management
+tags:
+  - name: Users DOA
+    description: User DOA management
+paths:
+  /usersDOA:
+    get:
+      summary: Get all users
+      tags:
+        - Users DOA
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDOA'

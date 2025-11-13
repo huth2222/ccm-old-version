@@ -1,0 +1,278 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Customer API
+  description: API documentation for Customer management
+tags:
+  - name: Customers
+    description: Customer management
+paths:
+  /customers/verifyData:
+    post: # Changed from GET to POST
+      summary: Verify a customer by Type, Tax ID, Branch Code, Company Code, Channel, Buying Group
+      tags:
+        - Customers
+      requestBody: # Added request body
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taxId:
+                  type: string
+                branchCode:
+                  type: string
+                companyCode:
+                  type: string
+                channel:
+                  type: string
+                buyingGroup:
+                  type: string
+                jobType:
+                  type: string
+                officeType:
+                  type: string
+                customerId:
+                  type: string
+              required:
+                - taxId
+                - branchCode
+                - companyCode
+                - channel
+                - buyingGroup
+                - jobType
+                - officeType
+      responses:
+        '200':
+          description: Verified successfully
+        '404':
+          description: Customer not found
+        '400':
+          description: Error Data is Exist
+  /customers:
+    get:
+      summary: Get all customers
+      tags:
+        - Customers
+      responses:
+        "200":
+          description: Successful response
+    post:
+      summary: Create a new customer
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "201":
+          description: Customer created successfully
+  /customers/{customerId}:
+    get:
+      summary: Get a customer by ID
+      tags:
+        - Customers
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: string
+          description: ID of the customer to retrieve
+      responses:
+        "200":
+          description: Successful response
+        "404":
+          description: Customer not found
+    put:
+      summary: Update a customer by ID
+      tags:
+        - Customers
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: string
+          description: ID of the customer to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Customer"
+      responses:
+        "200":
+          description: Customer updated successfully
+        "404":
+          description: Customer not found
+    delete:
+      summary: Delete a customer by ID
+      tags:
+        - Customers
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: string
+          description: ID of the customer to delete
+      responses:
+        "204":
+          description: Customer deleted successfully
+        "404":
+          description: Customer not found
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        CreatDate:
+          type: string
+          format: date
+        Customer:
+          type: string
+        Buying:
+          type: string
+        SalesOrg:
+          type: string
+        AcctGrp:
+          type: string
+        DistChan:
+          type: string
+        DistChanDesc:
+          type: string
+        CustGrp:
+          type: string
+        NAME1:
+          type: string
+        NAME2:
+          type: string
+        NAME3:
+          type: string
+        NAME4:
+          type: string
+        Street:
+          type: string
+        Street4:
+          type: string
+        Street5:
+          type: string
+        CityName:
+          type: string
+        PostalCde:
+          type: string
+        EMail1:
+          type: string
+        MobilePhone2:
+          type: string
+        MobilePhone3:
+          type: string
+        MobilePhone4:
+          type: string
+        MobilePhone5:
+          type: string
+        MobilePhone6:
+          type: string
+        Fax1:
+          type: string
+        Fax2:
+          type: string
+        Fax3:
+          type: string
+        Fax4:
+          type: string
+        EMail3:
+          type: string
+        EMail4:
+          type: string
+        EMail5:
+          type: string
+        EMail2:
+          type: string
+        Notes2:
+          type: string
+        Notes3:
+          type: string
+        Notes4:
+          type: string
+        TelephoneNo:
+          type: string
+        MobilePhone1:
+          type: string
+        RegionCode:
+          type: string
+        RegionDescription:
+          type: string
+        DistrictCode:
+          type: string
+        DistrictName:
+          type: string
+        SalesDistrict:
+          type: string
+        SalesDistrictDesc:
+          type: string
+        PaymentTerm:
+          type: string
+        W53:
+          type: string
+        PriceList:
+          type: string
+        TransportationZone:
+          type: string
+        ShippingCond:
+          type: string
+        CrLimit:
+          type: string
+        TaxNo3:
+          type: string
+        BranchCode:
+          type: string
+        BranchCodeDesc:
+          type: string
+        SH:
+          type: string
+        SHName:
+          type: string
+        SP:
+          type: string
+        SPName:
+          type: string
+        SE:
+          type: string
+        SEName:
+          type: string
+        SalesOff:
+          type: string
+        SalesOffDesc:
+          type: string
+        SalesGrp:
+          type: string
+        SalesGrpDesc:
+          type: string
+        AC:
+          type: string
+        ACName:
+          type: string
+        BP:
+          type: string
+        OrderBlk:
+          type: string
+        DelivBlk:
+          type: string
+        BillingBlk:
+          type: string
+        SalesBlk:
+          type: string
+        PostingBlk:
+          type: string
+        Comment:
+          type: string
+        BankRunning:
+          type: string
+      required:
+        - Customers # Assuming "Customer" is the primary key
