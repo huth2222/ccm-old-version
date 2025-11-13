@@ -1,43 +1,33 @@
 services:
   ccm_frontend:
+    build: ./ccm_frontend
     container_name: ccm_frontend
-    image: ccm_frontend
-    build:
-      context: ccm_frontend
-      dockerfile: ./Dockerfile
-    ports:
-      - 5173:5173
+    expose:
+      - "80"
     networks:
       - network_services
-    restart: always
 
   ccm_backend:
+    build: ./ccm_backend
     container_name: ccm_backend
-    image: ccm_backend
-    build:
-      context: ccm_backend
-      dockerfile: ./Dockerfile
-    ports:
-      - 5000:5000
+    expose:
+      - "5000"
     networks:
       - network_services
-    restart: always
 
   nginx:
-    build:
-      context: "./nginx"
-      dockerfile: Dockerfile
+    image: nginx:latest
     container_name: ccm_nginx
     ports:
       - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ccm_frontend/dist:/usr/share/nginx/html:ro
     depends_on:
       - ccm_frontend
       - ccm_backend
     networks:
       - network_services
-    restart: always
-    environment:
-      TZ: "Asia/Bangkok"
 
 networks:
   network_services:
