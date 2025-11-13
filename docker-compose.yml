@@ -27,8 +27,12 @@ services:
     build:
       context: "./nginx"
       dockerfile: Dockerfile
+    container_name: ccm_nginx
     ports:
       - "80:80"
+    depends_on:
+      - ccm_frontend
+      - ccm_backend
     networks:
       - network_services
     restart: always
