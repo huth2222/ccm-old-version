@@ -1,0 +1,91 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Authentication API
+  description: API documentation for user authentication
+tags:
+  - name: Authentication
+    description: User authentication
+paths:
+  /auth/login:
+    post:
+      summary: login authentication token
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employeeId:
+                  type: string
+                password:
+                  type: string
+              required:
+                - employeeId
+                - password
+      responses:
+        '200':
+          description: Token generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  employeeId:
+                    type: string
+                  role:
+                    type: string
+        '400':
+          description: Username and password are required
+        '401':
+          description: Invalid employeeId or password
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+  # /auth/login_admin:
+  #   post:
+  #     summary: admin login authentication token
+  #     tags:
+  #       - Authentication
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               employeeId:
+  #                 type: string
+  #               password:
+  #                 type: string
+  #             required:
+  #               - employeeId
+  #               - password
+      # responses:
+      #   '200':
+      #     description: Token generated successfully
+      #     content:
+      #       application/json:
+      #         schema:
+      #           type: object
+      #           properties:
+      #             token:
+      #               type: string
+      #             employeeId:
+      #               type: string
+      #             role:
+      #               type: string
+      #   '400':
+      #     description: Username and password are required
+      #   '401':
+      #     description: Invalid employeeId or password
+      #   '404':
+      #     description: User not found
+      #   '500':
+      #     description: Internal server error
