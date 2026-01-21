@@ -180,7 +180,7 @@ app.use(
     },
     challenge: true,
   }),
-  customerMasterRouter
+  customerMasterRouter,
 );
 
 //===================================================================================================
